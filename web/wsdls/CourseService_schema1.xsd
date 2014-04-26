@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" targetNamespace="http://courseservice.com/" xmlns:tns="http://courseservice.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="NonexistentCourseException" nillable="true" type="tns:nonexistentCourseExceptionBean"/>
+
+  <xs:element name="NonexistentSectionException" nillable="true" type="tns:nonexistentSectionExceptionBean"/>
+
+  <xs:element name="getActiveCourses" nillable="true" type="tns:getActiveCourses"/>
+
+  <xs:element name="getActiveCoursesResponse" nillable="true" type="tns:getActiveCoursesResponse"/>
+
+  <xs:element name="getAllCourses" nillable="true" type="tns:getAllCourses"/>
+
+  <xs:element name="getAllCoursesResponse" nillable="true" type="tns:getAllCoursesResponse"/>
+
+  <xs:element name="getAllCurrentSectionsOfCourse" nillable="true" type="tns:getAllCurrentSectionsOfCourse"/>
+
+  <xs:element name="getAllCurrentSectionsOfCourseResponse" nillable="true" type="tns:getAllCurrentSectionsOfCourseResponse"/>
+
+  <xs:element name="getAllSectionsOfCourse" nillable="true" type="tns:getAllSectionsOfCourse"/>
+
+  <xs:element name="getAllSectionsOfCourseResponse" nillable="true" type="tns:getAllSectionsOfCourseResponse"/>
+
+  <xs:element name="getCourse" nillable="true" type="tns:getCourse"/>
+
+  <xs:element name="getCourseResponse" nillable="true" type="tns:getCourseResponse"/>
+
+  <xs:element name="getCourseSkillCodes" nillable="true" type="tns:getCourseSkillCodes"/>
+
+  <xs:element name="getCourseSkillCodesResponse" nillable="true" type="tns:getCourseSkillCodesResponse"/>
+
+  <xs:element name="getInactiveCourses" nillable="true" type="tns:getInactiveCourses"/>
+
+  <xs:element name="getInactiveCoursesResponse" nillable="true" type="tns:getInactiveCoursesResponse"/>
+
+  <xs:element name="getSection" nillable="true" type="tns:getSection"/>
+
+  <xs:element name="getSectionResponse" nillable="true" type="tns:getSectionResponse"/>
+
+  <xs:complexType name="getCourse">
+    <xs:sequence>
+      <xs:element name="courseID" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getCourseResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:course" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="course">
+    <xs:sequence>
+      <xs:element name="courseCode" type="xs:string" minOccurs="0"/>
+      <xs:element name="courseDescription" type="xs:string" minOccurs="0"/>
+      <xs:element name="courseLevel" type="xs:string" minOccurs="0"/>
+      <xs:element name="courseTitle" type="xs:string" minOccurs="0"/>
+      <xs:element name="retailPrice" type="xs:double"/>
+      <xs:element name="status" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="nonexistentCourseExceptionBean">
+    <xs:sequence>
+      <xs:element name="courseCode" type="xs:string" minOccurs="0"/>
+      <xs:element name="message" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getInactiveCourses">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="getInactiveCoursesResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:course" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getSection">
+    <xs:sequence>
+      <xs:element name="courseCode" type="xs:string" minOccurs="0"/>
+      <xs:element name="sectionCode" type="xs:string" minOccurs="0"/>
+      <xs:element name="year" type="xs:int" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getSectionResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:section" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="section">
+    <xs:sequence>
+      <xs:element name="cost" type="xs:double"/>
+      <xs:element name="courseCode" type="xs:string" minOccurs="0"/>
+      <xs:element name="courseTitle" type="xs:string" minOccurs="0"/>
+      <xs:element name="formatCode" type="xs:string" minOccurs="0"/>
+      <xs:element name="formatName" type="xs:string" minOccurs="0"/>
+      <xs:element name="sectionCode" type="xs:string" minOccurs="0"/>
+      <xs:element name="year" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="nonexistentSectionExceptionBean">
+    <xs:sequence>
+      <xs:element name="courseCode" type="xs:string" minOccurs="0"/>
+      <xs:element name="message" type="xs:string" minOccurs="0"/>
+      <xs:element name="sectionCode" type="xs:string" minOccurs="0"/>
+      <xs:element name="year" type="xs:int" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getAllCourses">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="getAllCoursesResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:course" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getCourseSkillCodes">
+    <xs:sequence>
+      <xs:element name="courseCode" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getCourseSkillCodesResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getAllSectionsOfCourse">
+    <xs:sequence>
+      <xs:element name="courseCode" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getAllSectionsOfCourseResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:section" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getAllCurrentSectionsOfCourse">
+    <xs:sequence>
+      <xs:element name="courseCode" type="xs:string" minOccurs="0"/>
+      <xs:element name="year" type="xs:int" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getAllCurrentSectionsOfCourseResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:section" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getActiveCourses">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="getActiveCoursesResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:course" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+
